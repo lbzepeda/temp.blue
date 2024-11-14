@@ -1,0 +1,259 @@
+---
+import { Image } from 'astro:assets';
+import { mainFeatures, models } from './models.js';
+import AcControl from './public/ac-control.png';
+import AcImage from './public/ac-image.png';
+---
+
+<section class="bg-[#FBFBFD] dark:bg-black py-16">
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-xl mx-auto mb-16">
+      <h2 class="text-4xl font-semibold text-slate-900 dark:text-white mb-3">
+        Modelos TempBlue Inverter
+      </h2>
+      <p class="text-xl font-light text-slate-500 dark:text-slate-400">
+        Encuentra el aire acondicionado perfecto para tu espacio
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+      <!-- Product Image -->
+      <div class="relative group">
+        <div class="bg-gradient-to-b rounded-3xl p-6 transition-transform duration-500 group-hover:scale-[1.02]">
+          <div class="relative h-[400px]">
+            <Image
+              src={AcImage}
+              alt="TempBlue Air Conditioner"
+              class="w-full h-full object-contain transition-opacity duration-500 opacity-100 absolute top-0 left-0 product-image"
+            />
+            <Image
+              src={AcControl}
+              alt="TempBlue Control"
+              class="w-full h-full object-contain transition-opacity duration-500 opacity-0 absolute top-0 left-0 product-image"
+            />
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <button 
+                class="w-2 h-2 rounded-full bg-slate-300 transition-colors indicator-dot active"
+                data-index="0"
+                aria-label="Imagen 1"
+              ></button>
+              <button 
+                class="w-2 h-2 rounded-full bg-slate-300/50 hover:bg-slate-300 transition-colors indicator-dot"
+                data-index="1"
+                aria-label="Imagen 2"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Main Features -->
+      <div class="space-y-8">
+        <div class="grid grid-cols-2 gap-6">
+          {
+            mainFeatures.map((feature) => (
+              <div
+                class={`space-y-2 p-4 rounded-xl bg-${feature.color}-50/50 dark:bg-${feature.color}-900/20 backdrop-blur-sm transition-transform hover:-translate-y-1`}
+              >
+                <span class="text-2xl">{feature.icon}</span>
+                <p class="font-medium text-slate-900 dark:text-white">
+                  {feature.title}
+                </p>
+                <p class="text-sm text-slate-500">{feature.description}</p>
+              </div>
+            ))
+          }
+        </div>
+        <div class="flex items-end">
+          <!-- Download Button -->
+            <a
+            href="/tempblue_WX_series.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors group"
+          >
+            <span>Descargar Ficha Técnica</span>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              class="h-5 w-5 transition-transform group-hover:translate-y-0.5" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-sm">
+        <!-- Desktop View -->
+        <div class="hidden lg:block overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium">Capacidad</th>
+                <th class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium">Voltaje</th>
+                <th class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium">SEER</th>
+                <th class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium">Área Sugerida</th>
+                <th class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium">Uso Recomendado</th>
+                <th class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium">Nivel de Ruido</th>
+                <th class="text-left py-4 px-4"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+              {models.map((model) => (
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                  <td class="py-4 px-4">
+                    <div class="font-medium text-slate-900 dark:text-white">{model.name}</div>
+                    <div class="text-sm text-slate-500">{model.highlight}</div>
+                  </td>
+                  <td class="py-4 px-4">
+                    <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                      ${model.voltageType === 'blue'
+                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+                        : 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'}`}>
+                      {model.voltage}
+                    </span>
+                  </td>
+                  <td class="py-4 px-4">
+                    <div class="font-bold text-blue-600">{model.seer}</div>
+                  </td>
+                  <td class="py-4 px-4">
+                    <div class="text-slate-700 dark:text-slate-300">{model.area} m²</div>
+                  </td>
+                  <td class="py-4 px-4">
+                    <div class="text-slate-700 dark:text-slate-300">{model.recommended}</div>
+                  </td>
+                  <td class="py-4 px-4">
+                    <div class="text-slate-700 dark:text-slate-300">{model.features.noise}</div>
+                  </td>
+                  <td class="py-4 px-4">
+                    <button class="opacity-0 group-hover:opacity-100 transition-opacity text-blue-600 hover:text-blue-800 dark:hover:text-blue-400 font-medium flex items-center gap-2">
+                      Contactar <span class="text-lg">→</span>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      
+        <!-- Mobile/Tablet View -->
+        <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+          {models.map((model) => (
+            <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 space-y-4 hover:shadow-md transition-shadow">
+              <!-- Header -->
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="font-medium text-slate-900 dark:text-white text-lg">{model.name}</h3>
+                  <p class="text-sm text-slate-500">{model.highlight}</p>
+                </div>
+                <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                  ${model.voltageType === 'blue'
+                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+                    : 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'}`}>
+                  {model.voltage}
+                </span>
+              </div>
+      
+              <!-- Specs Grid -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <p class="text-sm text-slate-500">SEER</p>
+                  <p class="font-bold text-blue-600">{model.seer}</p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-sm text-slate-500">Área Sugerida</p>
+                  <p class="text-slate-700 dark:text-slate-300">{model.area} m²</p>
+                </div>
+              </div>
+      
+              <!-- Additional Info -->
+              <div class="space-y-3 py-3 border-t border-slate-200 dark:border-slate-700">
+                <div class="space-y-1">
+                  <p class="text-sm text-slate-500">Uso Recomendado</p>
+                  <p class="text-slate-700 dark:text-slate-300">{model.recommended}</p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-sm text-slate-500">Nivel de Ruido</p>
+                  <p class="text-slate-700 dark:text-slate-300">{model.features.noise}</p>
+                </div>
+              </div>
+      
+              <!-- Action Button -->
+              <button class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                Contactar <span class="text-lg">→</span>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>
+        .product-image {
+          transition: opacity 0.5s ease-in-out;
+        }
+      
+        .indicator-dot.active {
+          @apply bg-blue-500;
+        }
+      </style>
+      
+      <script>
+        let currentImage = 0;
+        const images = document.querySelectorAll('.product-image');
+        const dots = document.querySelectorAll('.indicator-dot');
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        
+        function updateImages(newIndex: number) {
+          images.forEach((img, index) => {
+            (img as HTMLElement).style.opacity = index === newIndex ? "1" : "0";
+          });
+          
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === newIndex);
+          });
+          
+          currentImage = newIndex;
+        }
+      
+        function nextImage() {
+          const newIndex = (currentImage + 1) % images.length;
+          updateImages(newIndex);
+        }
+      
+        function prevImage() {
+          const newIndex = (currentImage - 1 + images.length) % images.length;
+          updateImages(newIndex);
+        }
+      
+        nextButton?.addEventListener('click', () => {
+          nextImage();
+          clearInterval(intervalId); 
+          intervalId = setInterval(nextImage, 14000);
+        });
+      
+        prevButton?.addEventListener('click', () => {
+          prevImage();
+          clearInterval(intervalId);
+          intervalId = setInterval(nextImage, 4000);
+        });
+      
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            updateImages(index);
+            clearInterval(intervalId);
+            intervalId = setInterval(nextImage, 4000);
+          });
+        });
+      
+        let intervalId = setInterval(nextImage, 4000);
+      </script>
