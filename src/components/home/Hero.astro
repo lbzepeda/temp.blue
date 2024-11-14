@@ -1,0 +1,111 @@
+---
+import { Image } from 'astro:assets';
+import acTempBlue from './public/ac-temp-blue.png';
+---
+
+<section class="relative min-h-screen bg-white dark:bg-black pt-16">
+  <div class="absolute inset-0">
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/50 to-transparent dark:via-slate-950/50"
+    >
+    </div>
+  </div>
+
+  <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+    <!-- Text Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12" data-text="reveal">
+      <h1
+        class="text-3xl lg:text-5xl font-normal tracking-tight text-slate-900 dark:text-white mb-4"
+      >
+        El aire acondicionado
+        <span class="block mt-1 font-light">reimaginado</span>
+      </h1>
+      <p class="text-base text-slate-600 dark:text-slate-400">
+        Tecnología silenciosa. Diseño elegante. Eficiencia incomparable.
+      </p>
+    </div>
+
+    <!-- Imagen Principal -->
+    <div class="relative max-w-4xl mx-auto mb-16" data-image="reveal">
+      <Image
+        src={acTempBlue}
+        alt="TempBlue Air Conditioner"
+        width={1200}
+        height={800}
+        class="w-full h-auto object-contain"
+      />
+    </div>
+
+    <!-- Stats - En línea horizontal -->
+    <div
+      class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-x-6"
+      data-stats="reveal"
+    >
+      {
+        [
+          { number: '19dB', label: 'Ultra silencioso' },
+          { number: 'A+++', label: 'Eficiencia energética' },
+          { number: '99.9%', label: 'Purificación del aire' },
+          { number: '5 años', label: 'Garantía premium' },
+        ].map((stat) => (
+          <div class="text-center">
+            <div class="text-lg lg:text-xl font-light text-slate-900 dark:text-white">
+              {stat.number}
+            </div>
+            <div class="text-xs lg:text-sm text-slate-500 dark:text-slate-400">
+              {stat.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Scroll Indicator más pequeño -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2">
+      <div
+        class="w-4 h-6 border border-slate-300 dark:border-slate-700 rounded-full flex justify-center"
+      >
+        <div
+          class="w-0.5 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full mt-1.5 animate-bounce"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    container-type: inline-size;
+  }
+
+  [data-text='reveal'] {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  [data-image='reveal'] {
+    opacity: 0;
+    animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+  }
+
+  [data-stats='reveal'] {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>

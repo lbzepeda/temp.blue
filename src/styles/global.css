@@ -43,3 +43,30 @@
     @apply text-sm leading-relaxed;
   }
 }
+
+@layer utilities {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Animaciones suaves */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1000ms;
+}
+
+/* Mejoras para performance */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Mejoras para scroll */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
