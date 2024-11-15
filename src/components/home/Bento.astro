@@ -1,6 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import BentoImage from './public/bento-image.png';
+
+const modalContent = {
+  R410A: {
+    title: 'R410A - Refrigerante Ecológico',
+    content:
+      'El R410A es un refrigerante de alta eficiencia y bajo impacto ambiental. No daña la capa de ozono y tiene un potencial de calentamiento global menor que sus predecesores. Es ampliamente utilizado en sistemas modernos de aire acondicionado por su excelente capacidad de transferencia de calor y eficiencia energética.',
+  },
+  GMCC: {
+    title: 'GMCC - Tecnología de Compresores',
+    content:
+      'GMCC es uno de los mayores fabricantes mundiales de compresores. Sus compresores son reconocidos por su alta eficiencia, durabilidad superior y funcionamiento silencioso. La tecnología avanzada de GMCC permite un control preciso de la temperatura mientras maximiza el ahorro de energía.',
+  },
+};
 ---
 
 <section class="bg-[#FBFBFD] dark:bg-black py-16">
@@ -21,14 +34,12 @@ import BentoImage from './public/bento-image.png';
           class="h-[400px] rounded-2xl overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
         >
           <div
-            class="absolute inset-0 bg-gradient-to-r from-black/85 to-slate-900/40"
+            class="absolute inset-0 bg-gradient-to-r from-black/80 to-slate-900/40"
           >
             <Image
               src={BentoImage}
               alt="Diseño adaptado"
-              width={1200}
-              height={1200}
-              class="w-full h-full object-cover mix-blend-overlay opacity-90"
+              class="w-full h-full object-cover opacity-90"
             />
           </div>
           <div class="relative z-10 p-8 h-full flex flex-col justify-end">
@@ -45,7 +56,7 @@ import BentoImage from './public/bento-image.png';
       <!-- Wifi Connect -->
       <div class="group">
         <div
-          class="h-[400px] bg-white dark:bg-gradient-to-r dark:from-blue-950/30 dark:to-blue-900/20 rounded-2xl p-8 overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
+          class="h-[400px] bg-white dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800 rounded-2xl p-8 overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
         >
           <div class="relative z-10 h-full flex flex-col">
             <h3
@@ -101,7 +112,7 @@ import BentoImage from './public/bento-image.png';
       <!-- High Efficiency -->
       <div class="group">
         <div
-          class="h-[300px] bg-white dark:bg-gradient-to-r dark:from-green-950/30 dark:to-green-900/20 rounded-2xl p-8 overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
+          class="h-[300px] bg-white dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800 rounded-2xl p-8 overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
         >
           <div class="relative z-10 flex flex-col">
             <h3
@@ -126,7 +137,7 @@ import BentoImage from './public/bento-image.png';
       <!-- Eco-friendly Technology -->
       <div class="group">
         <div
-          class="h-[300px] border-green-500 border bg-white dark:bg-gradient-to-r dark:from-green-950/30 dark:to-green-900/20 rounded-2xl p-8 overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
+          class="h-[300px] border-green-500 border dark:from-slate-900 dark:to-slate-800 rounded-2xl p-8 overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
         >
           <div class="flex items-center gap-3 mb-6">
             <span class="text-4xl">🌱</span>
@@ -138,35 +149,104 @@ import BentoImage from './public/bento-image.png';
               ></span>
             </h3>
           </div>
-          <div class="space-y-6">
-            <div>
-              <h4
-                class="text-base font-semibold text-slate-900 dark:text-white"
+          <div class="mb-4">
+            <h4 class="text-base font-semibold text-slate-900 dark:text-white">
+              <button
+                data-modal-type="R410A"
+                class="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 font-medium underline-offset-4 hover:underline transition-all modal-trigger"
               >
                 R410A
-              </h4>
-              <p class="text-sm text-slate-600 dark:text-slate-400">
-                Refrigerante ecológico de última generación
-              </p>
-            </div>
-            <div>
-              <h4
-                class="text-base font-semibold text-slate-900 dark:text-white"
+              </button>
+            </h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Refrigerante ecológico de última generación
+            </p>
+          </div>
+          <div>
+            <h4 class="text-base font-semibold text-slate-900 dark:text-white">
+              <button
+                data-modal-type="GMCC"
+                class="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 font-medium underline-offset-4 hover:underline transition-all modal-trigger"
               >
                 GMCC
-              </h4>
-              <p class="text-sm text-slate-600 dark:text-slate-400">
-                Compresor de alta durabilidad y eficiencia
-              </p>
-            </div>
+              </button>
+            </h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Compresor de alta durabilidad y eficiencia
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <dialog
+    id="infoModal"
+    class="p-8 rounded-2xl w-full max-w-md bg-white dark:bg-slate-800 backdrop:bg-black/50 shadow-xl dark:shadow-2xl dark:shadow-slate-900/50"
+  >
+    <div class="relative">
+      <button
+        onclick="this.closest('dialog').close()"
+        class="absolute -right-2 -top-2 bg-slate-100 dark:bg-slate-700 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+      >
+        <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+          ></path>
+        </svg>
+      </button>
+      <h3
+        id="modalTitle"
+        class="text-2xl font-medium text-slate-900 dark:text-white mb-4"
+      >
+      </h3>
+      <p
+        id="modalContent"
+        class="text-slate-600 dark:text-slate-300 leading-relaxed"
+      >
+      </p>
+    </div>
+  </dialog>
 </section>
 
+<script define:vars={{ modalContent }}>
+  const modal = document.getElementById('infoModal');
+  const buttons = document.querySelectorAll('.modal-trigger');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const type = button.dataset.modalType;
+      const title = document.getElementById('modalTitle');
+      const content = document.getElementById('modalContent');
+
+      title.textContent = modalContent[type].title;
+      content.textContent = modalContent[type].content;
+      modal.showModal();
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    const dialogDimensions = modal.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      modal.close();
+    }
+  });
+</script>
+
 <style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  dialog {
+    margin: auto;
+  }
   @keyframes soundWave {
     0% {
       transform: translate(-50%, -50%) scale(0.2);
