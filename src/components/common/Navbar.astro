@@ -3,14 +3,60 @@ import { Image } from 'astro:assets';
 import logo from './public/commercial-logo.png';
 
 const NAVIGATION_ITEMS = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'Nosotros' },
-  { href: '#products', label: 'Productos' },
-  { href: '#contact', label: 'Contáctanos' },
+  {
+    href: '#home',
+    label: 'Home',
+  },
+  {
+    href: '#bento',
+    label: 'Climatización',
+  },
+  {
+    href: '#products',
+    label: 'Productos',
+  },
+  {
+    href: '#about',
+    label: 'Nosotros',
+    submenu: [
+      { label: 'Historia', href: '#about-history' },
+      { label: 'Misión', href: '#about-mission' },
+      { label: 'Visión', href: '#about-vision' },
+      { label: 'Valores', href: '#about-values' },
+    ],
+  },
+  {
+    href: '#contact',
+    label: 'Contáctanos',
+    submenu: [
+      { label: 'Soporte', href: '#contact-support' },
+      { label: 'Ventas', href: '#contact-sales' },
+      { label: 'Ubicación', href: '#contact-location' },
+    ],
+  },
 ] as const;
 
 const phoneNumber = '+505 8888-8888';
 ---
+
+<!-- Prevenir flash del tema incorrecto -->
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
+  }
+</script>
 
 <header
   class="fixed top-0 left-0 right-0 z-40 bg-white/70 dark:bg-black/70 backdrop-blur-md transition-transform duration-300"
@@ -26,13 +72,43 @@ const phoneNumber = '+505 8888-8888';
       <div class="hidden md:flex items-center gap-12">
         {
           NAVIGATION_ITEMS.map((item) => (
-            <a
-              href={item.href}
-              class="text-sm font-light text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all relative group"
-            >
-              {item.label}
-              <span class="absolute -bottom-1 left-0 w-0 h-px bg-current transition-all group-hover:w-full" />
-            </a>
+            <div class="relative group">
+              <a
+                href={item.href}
+                class="text-sm font-light text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all relative"
+              >
+                <span class="flex items-center gap-1">
+                  {item.label}
+                  {'submenu' in item && (
+                    <svg
+                      class="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  )}
+                </span>
+                <span class="absolute -bottom-1 left-0 w-0 h-px bg-current transition-all group-hover:w-full" />
+              </a>
+
+              {'submenu' in item && (
+                <div class="absolute top-full left-0 pt-2 w-48 hidden group-hover:block">
+                  <div class="bg-white dark:bg-slate-800 rounded-lg shadow-lg ring-1 ring-slate-900/5 dark:ring-white/10 p-2">
+                    {item.submenu.map((subItem) => (
+                      <a
+                        href={subItem.href}
+                        class="block px-4 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-md transition-colors"
+                      >
+                        {subItem.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))
         }
       </div>
@@ -160,15 +236,29 @@ const phoneNumber = '+505 8888-8888';
       id="mobile-menu"
       class="hidden md:hidden absolute top-16 inset-x-0 bg-white dark:bg-black"
     >
-      <div class="px-4 py-8 space-y-6 flex flex-col items-center">
+      <div class="px-4 py-8 space-y-6">
         {
           NAVIGATION_ITEMS.map((item) => (
-            <a
-              href={item.href}
-              class="block text-lg font-light text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              {item.label}
-            </a>
+            <div class="space-y-2">
+              <a
+                href={item.href}
+                class="block text-lg font-light text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
+              {'submenu' in item && (
+                <div class="pl-4 space-y-2">
+                  {item.submenu.map((subItem) => (
+                    <a
+                      href={subItem.href}
+                      class="block text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                    >
+                      {subItem.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))
         }
       </div>
@@ -176,4 +266,122 @@ const phoneNumber = '+505 8888-8888';
   </div>
 </header>
 
-<script src="./navigation.ts"></script>
+<script>
+  const header = document.querySelector('header');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuIcon = document.getElementById('menu-icon');
+
+  let lastScroll = 0;
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll <= 0) {
+        header.classList.remove('-translate-y-full');
+        return;
+      }
+
+      if (
+        currentScroll > lastScroll &&
+        mobileMenu &&
+        !mobileMenu.classList.contains('hidden')
+      ) {
+        return;
+      }
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.classList.add('-translate-y-full');
+      } else {
+        header.classList.remove('-translate-y-full');
+      }
+
+      lastScroll = currentScroll;
+    });
+  }
+
+  menuToggle?.addEventListener('click', () => {
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('hidden');
+    }
+    const isExpanded = mobileMenu
+      ? !mobileMenu.classList.contains('hidden')
+      : false;
+    menuToggle.setAttribute('aria-expanded', isExpanded.toString());
+
+    if (isExpanded) {
+      if (menuIcon) {
+        menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      }
+    } else {
+      if (menuIcon) {
+        menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      }
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (this: HTMLAnchorElement, e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = targetId ? document.querySelector(targetId) : null;
+
+      if (targetElement) {
+        if (mobileMenu) {
+          mobileMenu.classList.add('hidden');
+        }
+
+        if (menuIcon) {
+          menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
+
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    });
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+
+  function setTheme(theme: string) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }
+
+  initTheme();
+
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    setTheme(isDark ? 'light' : 'dark');
+  }
+
+  themeToggle?.addEventListener('click', toggleTheme);
+  themeToggleMobile?.addEventListener('click', toggleTheme);
+
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+</script>
