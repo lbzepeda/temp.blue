@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import Cert3 from './public/ahri.png';
+import Cert2 from './public/ul.png';
+import Cert1 from './public/wireless-connection.png';
+---
+
+<footer class="bg-[#F5F5F7] dark:bg-black py-8">
+  <div class="max-w-[800px] mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <!-- Contact -->
+      <div>
+        <p class="text-xs uppercase text-slate-500 mb-2">Contacto</p>
+        <ul class="space-y-1.5 text-xs">
+          <li>
+            <a
+              href="tel:+50583288412"
+              class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors"
+            >
+              +505 8328 8412
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:info@tempblue.com"
+              class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors"
+            >
+              info@tempblue.com
+            </a>
+          </li>
+          <li class="text-slate-600 dark:text-slate-400">Managua, Nicaragua</li>
+        </ul>
+      </div>
+
+      <!-- Certifications -->
+      <div class="flex flex-col items-center">
+        <div class="flex items-center gap-6">
+          <div class="group relative">
+            <Image
+              src={Cert1}
+              alt="WiFi Certified"
+              class="h-8 w-auto grayscale hover:grayscale-0 transition-all"
+            />
+            <div
+              class="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-black text-white text-xs rounded p-2"
+            >
+              Certificación WiFi: Garantiza compatibilidad y rendimiento óptimo
+              con redes inalámbricas
+            </div>
+          </div>
+          <div class="group relative">
+            <Image
+              src={Cert2}
+              alt="UL Certified"
+              class="h-8 w-auto grayscale hover:grayscale-0 transition-all"
+            />
+            <div
+              class="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-black text-white text-xs rounded p-2"
+            >
+              Certificación UL: Verifica el cumplimiento de estándares de
+              seguridad internacionales
+            </div>
+          </div>
+          <div class="group relative">
+            <Image
+              src={Cert3}
+              alt="AHRI Certified"
+              class="h-8 w-auto grayscale hover:grayscale-0 transition-all"
+            />
+            <div
+              class="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-black text-white text-xs rounded p-2"
+            >
+              Certificación AHRI: Valida el rendimiento y eficiencia de equipos
+              de climatización
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+      <p class="text-center text-xs text-slate-400">
+        © {new Date().getFullYear()} TempBlue. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
