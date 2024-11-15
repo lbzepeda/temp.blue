@@ -5,7 +5,6 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   output: 'static',
   server: {
-    port: process.env.PORT || 3000,
     host: true,
   },
   integrations: [
