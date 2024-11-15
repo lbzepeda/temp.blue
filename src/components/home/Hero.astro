@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import acTempBlue from './public/ac-temp-blue.png';
 ---
 
 <section id="home" class="relative min-h-screen bg-white dark:bg-black pt-16">
@@ -54,7 +53,7 @@ import acTempBlue from './public/ac-temp-blue.png';
     <!-- Imagen Principal -->
     <div class="relative max-w-4xl mx-auto mb-16" data-image="reveal">
       <Image
-        src={acTempBlue}
+        src="/ac-temp-blue.png"
         alt="TempBlue Air Conditioner"
         width={1200}
         height={800}

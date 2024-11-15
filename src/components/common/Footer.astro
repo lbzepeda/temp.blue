@@ -1,8 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import Cert3 from './public/ahri.png';
-import Cert2 from './public/ul.png';
-import Cert1 from './public/wireless-connection.png';
 ---
 
 <footer class="bg-[#F5F5F7] dark:bg-black py-8">
@@ -37,8 +34,10 @@ import Cert1 from './public/wireless-connection.png';
         <div class="flex items-center gap-6">
           <div class="group relative">
             <Image
-              src={Cert1}
+              src="/wireless-connection.png"
               alt="WiFi Certified"
+              width={32}
+              height={32}
               class="h-8 w-auto grayscale hover:grayscale-0 transition-all"
             />
             <div
@@ -50,8 +49,10 @@ import Cert1 from './public/wireless-connection.png';
           </div>
           <div class="group relative">
             <Image
-              src={Cert2}
+              src="/ul.png"
               alt="UL Certified"
+              width={32}
+              height={32}
               class="h-8 w-auto grayscale hover:grayscale-0 transition-all"
             />
             <div
@@ -63,10 +64,13 @@ import Cert1 from './public/wireless-connection.png';
           </div>
           <div class="group relative">
             <Image
-              src={Cert3}
+              src="/ahri.png"
               alt="AHRI Certified"
+              width={32}
+              height={32}
               class="h-8 w-auto grayscale hover:grayscale-0 transition-all"
             />
+
             <div
               class="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-black text-white text-xs rounded p-2"
             >

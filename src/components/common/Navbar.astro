@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import logo from './public/commercial-logo.png';
 
 const NAVIGATION_ITEMS = [
   {
@@ -59,7 +58,13 @@ const phoneNumber = '+505 7772-6999';
     <nav class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href="/#home" class="flex-shrink-0">
-        <Image src={logo} alt="TempBlue Logo" class="h-6 w-auto" />
+        <Image
+          src="/commercial-logo.png"
+          width={32}
+          height={32}
+          alt="TempBlue Logo"
+          class="h-6 w-auto"
+        />
       </a>
 
       <!-- Desktop Navigation -->
@@ -269,7 +274,7 @@ const phoneNumber = '+505 7772-6999';
 
   if (header) {
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
+      const currentScroll = window.scrollY;
       if (currentScroll <= 0) {
         header.classList.remove('-translate-y-full');
         return;

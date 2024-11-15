@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/common/Navbar.astro';
 import Footer from '@/components/common/Footer.astro';
-import aboutImage from './public/about-image.png';
 
 interface ValueCard {
   icon: string;
@@ -118,8 +117,10 @@ const values: ValueCard[] = [
                 class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-2xl"
               >
                 <Image
-                  src={aboutImage}
+                  src="/about-image.png"
                   alt="TempBlue Historia"
+                  width={800}
+                  height={450}
                   class="object-cover w-full h-full"
                 />
               </div>
