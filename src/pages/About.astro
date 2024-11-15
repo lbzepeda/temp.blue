@@ -40,133 +40,137 @@ const values: ValueCard[] = [
 
 <Layout title="Sobre Nosotros - TempBlue">
   <Navbar />
-  <main class="pt-16">
-    <section class="py-20 bg-white dark:bg-black">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Hero Section -->
-        <div class="text-center max-w-3xl mx-auto mb-20">
-          <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-6">
-            Sobre Nosotros
-          </h1>
-          <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-            En <span class="text-blue-600 font-semibold">Tempblue</span>, somos
-            mucho más que una empresa de venta de aire acondicionado; somos
-            expertos en soluciones de climatización que redefinen la experiencia
-            del confort en hogares y negocios.
+  <main class="pt-16 bg-slate-50 dark:bg-black">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <!-- Hero Image -->
+      <div class="mb-12 max-w-xl mx-auto">
+        <h1 class="text-5xl font-bold text-slate-900 dark:text-white mb-6">
+          Sobre Nosotros
+        </h1>
+        <div
+          class="aspect-w-16 aspect-h-6 rounded-lg overflow-hidden shadow-md"
+        >
+          <Image
+            src="/about-image.png"
+            alt="TempBlue Historia"
+            width={500}
+            height={188}
+            class="object-cover w-full h-full"
+          />
+        </div>
+      </div>
+
+      <!-- Blog Header -->
+      <header class="mb-16 text-center">
+        <p
+          class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto"
+        >
+          En <span class="text-blue-600 font-semibold">Tempblue</span>, somos
+          mucho más que una empresa de venta de aire acondicionado; somos
+          expertos en soluciones de climatización que redefinen la experiencia
+          del confort en hogares y negocios.
+        </p>
+      </header>
+
+      <!-- Main Content -->
+      <div class="prose prose-lg prose-slate dark:prose-invert mx-auto">
+        <!-- Historia Section -->
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">
+            Nuestra Historia
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            <span class="text-blue-600 font-semibold">Tempblue</span> nació de la
+            necesidad de ofrecer soluciones integrales en climatización, combinando
+            experiencia técnica con un profundo enfoque en la satisfacción del cliente.
+            Desde nuestros primeros días, nos hemos centrado en seleccionar los mejores
+            sistemas de aire acondicionado del mercado, garantizando que nuestros
+            clientes disfruten de equipos confiables, duraderos y eficientes.
           </p>
-        </div>
+        </section>
 
-        <!-- Mission & Vision Grid -->
-        <div class="grid md:grid-cols-2 gap-12 mb-20">
-          <!-- Mission -->
-          <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl">
-            <h2
-              class="text-2xl font-semibold text-slate-900 dark:text-white mb-4"
+        <!-- Mission & Vision Section -->
+        <section class="mb-16">
+          <div class="grid gap-12">
+            <div
+              class="bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-sm"
             >
-              Nuestra Misión
-            </h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Mejorar la calidad de vida de las personas a través de soluciones
-              de climatización personalizadas y altamente eficientes. Creemos
-              que un ambiente bien climatizado no solo mejora el confort, sino
-              que también contribuye a la productividad, la salud y el bienestar
-              general.
-            </p>
-          </div>
-
-          <!-- Vision -->
-          <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl">
-            <h2
-              class="text-2xl font-semibold text-slate-900 dark:text-white mb-4"
-            >
-              Nuestra Visión
-            </h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Aspiramos a ser líderes en la industria de climatización,
-              proporcionando soluciones innovadoras que mejoren la calidad de
-              vida de nuestros clientes y contribuyan a un futuro más
-              sostenible. Nuestra visión es crear espacios confortables,
-              energéticamente eficientes y ecológicamente responsables.
-            </p>
-          </div>
-        </div>
-
-        <!-- History Section -->
-        <div class="relative mb-20">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="order-2 lg:order-1">
               <h2
-                class="text-2xl font-semibold text-slate-900 dark:text-white mb-6"
+                class="text-2xl font-bold text-slate-900 dark:text-white mb-4"
               >
-                Nuestra Historia
+                Nuestra Misión
               </h2>
-              <div class="prose prose-slate dark:prose-invert">
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  <span class="text-blue-600 font-semibold">Tempblue</span> nació
-                  de la necesidad de ofrecer soluciones integrales en climatización,
-                  combinando experiencia técnica con un profundo enfoque en la satisfacción
-                  del cliente. Desde nuestros primeros días, nos hemos centrado en
-                  seleccionar los mejores sistemas de aire acondicionado del mercado,
-                  garantizando que nuestros clientes disfruten de equipos confiables,
-                  duraderos y eficientes.
-                </p>
-              </div>
+              <p class="text-slate-600 dark:text-slate-400">
+                Mejorar la calidad de vida de las personas a través de
+                soluciones de climatización personalizadas y altamente
+                eficientes. Creemos que un ambiente bien climatizado no solo
+                mejora el confort, sino que también contribuye a la
+                productividad, la salud y el bienestar general.
+              </p>
             </div>
-            <div class="order-1 lg:order-2">
-              <div
-                class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-2xl"
+
+            <div
+              class="bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-sm"
+            >
+              <h2
+                class="text-2xl font-bold text-slate-900 dark:text-white mb-4"
               >
-                <Image
-                  src="/about-image.png"
-                  alt="TempBlue Historia"
-                  width={800}
-                  height={450}
-                  class="object-cover w-full h-full"
-                />
-              </div>
+                Nuestra Visión
+              </h2>
+              <p class="text-slate-600 dark:text-slate-400">
+                Aspiramos a ser líderes en la industria de climatización,
+                proporcionando soluciones innovadoras que mejoren la calidad de
+                vida de nuestros clientes y contribuyan a un futuro más
+                sostenible. Nuestra visión es crear espacios confortables,
+                energéticamente eficientes y ecológicamente responsables.
+              </p>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- Values Section -->
-        <div>
+        <section>
           <h2
-            class="text-2xl font-semibold text-center text-slate-900 dark:text-white mb-12"
+            class="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center"
           >
             Nuestros Valores
           </h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="grid sm:grid-cols-2 gap-8">
             {
               values.map((value) => (
-                <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl transform transition-all duration-300 hover:scale-105">
-                  <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center mb-4">
-                    <svg
-                      class="w-6 h-6 text-blue-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d={value.icon}
-                      />
-                    </svg>
+                <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={value.icon}
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {value.title}
+                      </h3>
+                      <p class="text-slate-600 dark:text-slate-400">
+                        {value.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 class="text-lg font-medium text-slate-900 dark:text-white mb-2">
-                    {value.title}
-                  </h3>
-                  <p class="text-slate-600 dark:text-slate-400 text-sm">
-                    {value.description}
-                  </p>
                 </div>
               ))
             }
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </article>
   </main>
   <Footer />
 </Layout>
