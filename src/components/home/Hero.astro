@@ -12,13 +12,39 @@ import acTempBlue from './public/ac-temp-blue.png';
   </div>
 
   <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-    <!-- Text Header -->
+    <!-- Opción 2: Más elegante -->
     <div class="text-center max-w-2xl mx-auto mb-12" data-text="reveal">
       <h1
         class="text-3xl lg:text-5xl font-normal tracking-tight text-slate-900 dark:text-white mb-4"
       >
-        El aire acondicionado
-        <span class="block mt-1 font-light">reimaginado</span>
+        <span class="relative inline-block">
+          <svg
+            class="absolute -bottom-2 left-0 w-full -z-10"
+            height="16"
+            viewBox="0 0 200 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 6.5C40 5 80 4 120 2.5C160 1 180 0.5 199 0"
+              stroke="rgb(34 197 94)"
+              stroke-width="1"
+              stroke-linecap="round"
+              pathLength="100"
+              class="dark:stroke-green-400"
+              style="stroke-dasharray: 100; stroke-dashoffset: 0;"
+            >
+              <animate
+                attributeName="stroke-width"
+                values="3;8"
+                dur="1ms"
+                fill="freeze"></animate>
+            </path>
+          </svg>
+          <span class="relative z-10">Nicaragua</span>
+        </span>
+        , bienvenida al futuro
+        <span class="block mt-1 font-light">de la climatización</span>
       </h1>
       <p class="text-base text-slate-600 dark:text-slate-400">
         Tecnología silenciosa. Diseño elegante. Eficiencia incomparable.
@@ -43,13 +69,25 @@ import acTempBlue from './public/ac-temp-blue.png';
     >
       {
         [
-          { number: '19dB', label: 'Ultra silencioso' },
-          { number: 'A+++', label: 'Eficiencia energética' },
-          { number: '99.9%', label: 'Purificación del aire' },
-          { number: '5 años', label: 'Garantía premium' },
+          {
+            number: '21.5 SEER2',
+            label: 'Máximo ahorro energético',
+          },
+          {
+            number: '22.5 dB',
+            label: 'Nivel de ruido más bajo',
+          },
+          {
+            number: '37,500 BTU',
+            label: 'Máxima capacidad',
+          },
+          {
+            number: '🌱 R410A',
+            label: 'Refrigerante ecológico',
+          },
         ].map((stat) => (
           <div class="text-center">
-            <div class="text-lg lg:text-xl font-light text-slate-900 dark:text-white">
+            <div class="text-lg font-semibold lg:text-xl text-slate-900 dark:text-white">
               {stat.number}
             </div>
             <div class="text-xs lg:text-sm text-slate-500 dark:text-slate-400">
@@ -58,18 +96,6 @@ import acTempBlue from './public/ac-temp-blue.png';
           </div>
         ))
       }
-    </div>
-
-    <!-- Scroll Indicator más pequeño -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2">
-      <div
-        class="w-4 h-6 border border-slate-300 dark:border-slate-700 rounded-full flex justify-center"
-      >
-        <div
-          class="w-0.5 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full mt-1.5 animate-bounce"
-        >
-        </div>
-      </div>
     </div>
   </div>
 </section>
