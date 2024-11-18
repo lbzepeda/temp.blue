@@ -1,0 +1,55 @@
+---
+interface Props {
+  text: string;
+  strokeClass?: string; // Clase de color para el trazo
+  darkStrokeClass?: string; // Clase de color para el trazo en modo oscuro
+  height?: number;
+  width?: number;
+  strokeWidth?: number;
+  finalStrokeWidth?: number;
+  className?: string;
+}
+
+const {
+  text,
+  strokeClass = 'stroke-blue-500', // Clase por defecto para el trazo
+  darkStrokeClass = 'dark:stroke-blue-400', // Clase por defecto para modo oscuro
+  height = 16,
+  width = 200,
+  strokeWidth = 1,
+  finalStrokeWidth = 8,
+  className = '',
+} = Astro.props;
+
+// Calculamos el ancho del SVG basado en la longitud del texto
+const dynamicWidth = Math.max(width, text.length * 12);
+---
+
+<span class:list={['relative inline-block', className]}>
+  <svg
+    class="absolute -bottom-2 left-0 w-full -z-10"
+    height={height}
+    viewBox={`0 0 ${dynamicWidth} ${height}`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d={`M1 ${height / 2.5}C${dynamicWidth * 0.2} ${height / 3.2} ${dynamicWidth * 0.4} ${height / 4} ${dynamicWidth * 0.6} ${height / 6.4}C${dynamicWidth * 0.8} ${height / 20} ${dynamicWidth * 0.9} ${height / 32} ${dynamicWidth - 1} 0`}
+      class:list={[strokeClass, darkStrokeClass]}
+      stroke-width={strokeWidth}
+      stroke-linecap="round"
+      pathLength="100"
+      style={{
+        strokeDasharray: '100',
+        strokeDashoffset: '0',
+      }}
+    >
+      <animate
+        attributeName="stroke-width"
+        values={`${strokeWidth};${finalStrokeWidth}`}
+        dur="1ms"
+        fill="freeze"></animate>
+    </path>
+  </svg>
+  <span class="relative z-10">{text}</span>
+</span>
