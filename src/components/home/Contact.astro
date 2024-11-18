@@ -41,6 +41,7 @@ const contactMethods: ContactMethod[] = [
       preload="auto"
       class="w-full h-full object-cover scale-105 motion-safe:animate-subtle-zoom"
     >
+      <source src={VIDEO_URL} type="video/mp4" />
       <source src={VIDEO_URL} type="video/webm" />
     </video>
   </div>
@@ -155,28 +156,51 @@ const contactMethods: ContactMethod[] = [
 
   if (video) {
     const loadVideo = () => {
-      video.style.opacity = '0';
-      const playPromise = video.play();
+      // Detectar iOS
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-      if (playPromise !== undefined) {
-        playPromise
+      if (isIOS) {
+        // En iOS, cargar el video inmediatamente
+        video
+          .play()
           .then(() => {
             video.style.transition = 'opacity 1s ease-in-out';
             video.style.opacity = '1';
           })
           .catch((error) => {
             console.warn('Error reproduciendo video:', error);
+            // En iOS, mostrar una imagen de respaldo en lugar de ocultar el video
             video.style.display = 'none';
+            // Aquí puedes agregar un fallback image si lo deseas
           });
+      } else {
+        // Comportamiento actual para no-iOS
+        video.style.opacity = '0';
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              video.style.transition = 'opacity 1s ease-in-out';
+              video.style.opacity = '1';
+            })
+            .catch((error) => {
+              console.warn('Error reproduciendo video:', error);
+              video.style.display = 'none';
+            });
+        }
       }
     };
 
+    // Para iOS, necesitamos esperar a un evento de interacción del usuario
     if (document.readyState === 'complete') {
+      // Pequeño retraso para asegurar que todo esté listo
       setTimeout(loadVideo, 100);
     } else {
       window.addEventListener('load', loadVideo);
     }
 
+    // Manejador de redimensionamiento optimizado
     let resizeTimeout: ReturnType<typeof setTimeout>;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
