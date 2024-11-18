@@ -43,20 +43,59 @@ const modalContent = {
               class="w-full h-full object-cover opacity-90"
             />
           </div>
-          <div class="relative z-10 flex flex-col justify-end h-full">
-            <div class="bg-black/[0.2] backdrop-blur-3xl p-4 sm:p-4">
-              <h3
-                class="text-2xl sm:text-3xl font-medium text-white"
-                style="text-shadow:0 0 10px rgba(0,0,0,.5)"
+          <div class="md:col-span-2 group">
+            <div
+              class="h-[400px] rounded-2xl overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-black/80 to-slate-900/40"
               >
-                Diseño Adaptado a Ti
-              </h3>
-              <p
-                class="text-base sm:text-lg text-white/90 font-normal"
-                style="text-shadow:0 0 8px rgba(0,0,0,.3)"
-              >
-                Tu espacio, tu estilo, tu clima perfecto.
-              </p>
+                <Image
+                  src="/bento-imagen.jpeg"
+                  width={3200}
+                  height={3200}
+                  alt="Diseño adaptado"
+                  class="w-full h-full object-cover opacity-90"
+                />
+              </div>
+              <!-- Modified blur section -->
+              <div class="md:col-span-2 group">
+                <div
+                  class="h-[400px] rounded-2xl overflow-hidden relative shadow-lg hover:shadow-xl transition-all duration-500"
+                >
+                  <div
+                    class="absolute inset-0 bg-gradient-to-r from-black/80 to-slate-900/40"
+                  >
+                    <Image
+                      src="/bento-imagen.jpeg"
+                      width={3200}
+                      height={3200}
+                      alt="Diseño adaptado"
+                      class="w-full h-full object-cover opacity-90"
+                    />
+                  </div>
+                  <!-- Modified blur section with more transparency -->
+                  <div class="relative z-10 flex flex-col justify-end h-full">
+                    <div
+                      class="p-4 sm:p-4"
+                      style="background: rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);"
+                    >
+                      <h3
+                        class="text-2xl sm:text-3xl font-medium text-white"
+                        style="text-shadow:0 0 10px rgba(0,0,0,.5)"
+                      >
+                        Diseño Adaptado a Ti
+                      </h3>
+                      <p
+                        class="text-base sm:text-lg text-white/90 font-normal"
+                        style="text-shadow:0 0 8px rgba(0,0,0,.3)"
+                      >
+                        Tu espacio, tu estilo, tu clima perfecto.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
