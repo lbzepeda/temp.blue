@@ -1,4 +1,6 @@
 ---
+import { SEO } from 'astro-seo';
+
 interface Props {
   title: string;
   description?: string;
@@ -23,46 +25,63 @@ const seoTitle = `${title} | TempBlue - Aire Acondicionado Nicaragua`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <!-- Basic SEO -->
-    <title>{seoTitle}</title>
-    <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={seoTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={seoTitle} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-
-    <!-- Generator -->
-    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={seoTitle}
+      description={description}
+      canonical={canonicalURL}
+      noindex={false}
+      nofollow={false}
+      openGraph={{
+        basic: {
+          title: seoTitle,
+          type: 'website',
+          image: image,
+          url: Astro.url,
+        },
+        optional: {
+          description: description,
+          locale: 'es_NI',
+          siteName: 'TempBlue',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: seoTitle,
+        description: description,
+        image: image,
+        imageAlt: 'TempBlue Nicaragua',
+      }}
+      extend={{
+        meta: [
+          {
+            name: 'keywords',
+            content:
+              'aire acondicionado, climatización, Nicaragua, instalación aire acondicionado, mantenimiento aire acondicionado, TempBlue, sistemas de climatización',
+          },
+          {
+            name: 'author',
+            content: 'TempBlue',
+          },
+          {
+            name: 'generator',
+            content: Astro.generator,
+          },
+        ],
+        link: [
+          {
+            rel: 'icon',
+            type: 'image/png',
+            href: '/favicon.png',
+          },
+        ],
+      }}
+    />
 
     <!-- Fonts -->
     <link
       href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400,300&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Keywords -->
-    <meta
-      name="keywords"
-      content="aire acondicionado, climatización, Nicaragua, instalación aire acondicionado, mantenimiento aire acondicionado, TempBlue, sistemas de climatización"
-    />
-
-    <!-- Author -->
-    <meta name="author" content="TempBlue" />
   </head>
   <body class="bg-white dark:bg-gray-900">
     <slot />
