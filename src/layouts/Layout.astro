@@ -2,27 +2,67 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
-const { 
+const {
   title,
-  description = "TempBlue - Expertos en climatización y aires acondicionados"
+  description = 'TempBlue - Expertos en climatización y aires acondicionados en Nicaragua. Instalación y mantenimiento de aire acondicionado residencial y comercial',
+  image = '/imagen-social-default.png',
+  canonicalURL = Astro.url,
 } = Astro.props;
+
+// Create full title for SEO
+const seoTitle = `${title} | TempBlue - Aire Acondicionado Nicaragua`;
 ---
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Basic SEO -->
+    <title>{seoTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={seoTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | TempBlue</title>
+
+    <!-- Fonts -->
     <link
       href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400,300&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Keywords -->
+    <meta
+      name="keywords"
+      content="aire acondicionado, climatización, Nicaragua, instalación aire acondicionado, mantenimiento aire acondicionado, TempBlue, sistemas de climatización"
+    />
+
+    <!-- Author -->
+    <meta name="author" content="TempBlue" />
   </head>
   <body class="bg-white dark:bg-gray-900">
     <slot />
@@ -30,13 +70,13 @@ const {
 </html>
 
 <style is:global>
-	:root {
-		--accent: #0891b2; /* Main color - Cyan 600 */
-		--accent-light: #22d3ee; /* Cyan 400 */
-		--accent-dark: #155e75; /* Cyan 800 */
-	}
+  :root {
+    --accent: #0891b2; /* Main color - Cyan 600 */
+    --accent-light: #22d3ee; /* Cyan 400 */
+    --accent-dark: #155e75; /* Cyan 800 */
+  }
 
-	html {
-		@apply antialiased;
-	}
+  html {
+    @apply antialiased;
+  }
 </style>
