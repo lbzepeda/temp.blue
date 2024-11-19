@@ -1,4 +1,5 @@
 ---
+import { FileDown } from 'lucide-react';
 import { models } from './models.js';
 
 function createWhatsAppMessage(model: {
@@ -83,6 +84,11 @@ function createWhatsAppMessage(model: {
               class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium"
               >Nivel de Ruido</th
             >
+            <th
+              class="text-left py-4 px-4 text-slate-900 dark:text-white font-medium"
+            >
+              AHRI
+            </th>
             <th class="text-left py-4 px-4"></th>
           </tr>
         </thead>
@@ -128,10 +134,22 @@ function createWhatsAppMessage(model: {
                 </td>
                 <td class="py-4 px-4">
                   <a
-                    href={`https://wa.me/+50577726999?text=${createWhatsAppMessage({
-                      ...model,
-                      seer: model.seer.toString()
-                    })}`}
+                    href={`/certificates/${model.certificate}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-blue-600 hover:text-blue-800 dark:hover:text-blue-400"
+                  >
+                    <FileDown className="w-6 h-6" />
+                  </a>
+                </td>
+                <td class="py-4 px-4">
+                  <a
+                    href={`https://wa.me/+50577726999?text=${createWhatsAppMessage(
+                      {
+                        ...model,
+                        seer: model.seer.toString(),
+                      }
+                    )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="opacity-0 group-hover:opacity-100 transition-opacity text-blue-600 hover:text-blue-800 dark:hover:text-blue-400 font-medium flex items-center gap-2"
@@ -145,57 +163,88 @@ function createWhatsAppMessage(model: {
         </tbody>
       </table>
     </div>
+
     <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-      {models.map((model) => (
-        <div class="bg-white dark:bg-slate-800/50 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
-          <!-- Header -->
-          <div class="flex justify-between items-start gap-2 mb-3">
-            <div>
-              <h3 class="font-medium text-slate-900 dark:text-white">{model.name}</h3>
-              <p class="text-xs text-slate-500 mt-0.5">{model.highlight}</p>
+      {
+        models.map((model) => (
+          <div class="bg-white dark:bg-slate-800/50 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
+            {/* Header */}
+            <div class="flex justify-between items-start gap-2 mb-3">
+              <div>
+                <h3 class="font-medium text-slate-900 dark:text-white">
+                  {model.name}
+                </h3>
+                <p class="text-xs text-slate-500 mt-0.5">{model.highlight}</p>
+              </div>
+              <span
+                class={`shrink-0 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium
+              ${
+                model.voltageType === 'blue'
+                  ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+                  : 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
+              }`}
+              >
+                {model.voltage}
+              </span>
             </div>
-            <span class={`shrink-0 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium
-              ${model.voltageType === 'blue'
-                ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
-                : 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'}`}>
-              {model.voltage}
-            </span>
+
+            {/* Specs Grid */}
+            <div class="grid grid-cols-2 gap-4 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-500">SEER:</span>
+                <span class="font-medium text-blue-600">{model.seer}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-500">Área:</span>
+                <span class="text-slate-700 dark:text-slate-300">
+                  {model.area} m²
+                </span>
+              </div>
+            </div>
+
+            {/* Additional Info */}
+            <div class="space-y-1.5 py-2 border-t border-slate-200 dark:border-slate-700 mb-3">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex gap-2">
+                  <span class="text-xs text-slate-500">Uso:</span>
+                  <span class="text-xs text-slate-700 dark:text-slate-300">
+                    {model.recommended}
+                  </span>
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-xs text-slate-500">AHRI:</span>
+                  <a
+                    href={`/certificates/${model.certificate}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-blue-600 hover:text-blue-800 dark:hover:text-blue-400"
+                  >
+                    <FileDown className="w-7 h-7" />
+                  </a>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-xs text-slate-500">Ruido:</span>
+                <span class="text-xs text-slate-700 dark:text-slate-300">
+                  {model.features.noise}
+                </span>
+              </div>
+            </div>
+
+            {/* Button */}
+            <a
+              href={`https://wa.me/50577726999?text=${createWhatsAppMessage({
+                ...model,
+                seer: model.seer.toString(),
+              })}`}
+              target="_blank"
+              class="w-full py-1.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors text-xs font-medium flex items-center justify-center gap-1"
+            >
+              Contactar <span class="text-sm">→</span>
+            </a>
           </div>
-    
-          <!-- Specs Grid -->
-          <div class="grid grid-cols-2 gap-4 mb-3">
-            <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500">SEER:</span>
-              <span class="font-medium text-blue-600">{model.seer}</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500">Área:</span>
-              <span class="text-slate-700 dark:text-slate-300">{model.area} m²</span>
-            </div>
-          </div>
-    
-          <!-- Additional Info -->
-          <div class="space-y-1.5 py-2 border-t border-slate-200 dark:border-slate-700 mb-3">
-            <div class="flex gap-2">
-              <span class="text-xs text-slate-500">Uso:</span>
-              <span class="text-xs text-slate-700 dark:text-slate-300">{model.recommended}</span>
-            </div>
-            <div class="flex gap-2">
-              <span class="text-xs text-slate-500">Ruido:</span>
-              <span class="text-xs text-slate-700 dark:text-slate-300">{model.features.noise}</span>
-            </div>
-          </div>
-    
-          <!-- Button -->
-          <a href={`https://wa.me/50577726999?text=${createWhatsAppMessage({
-            ...model,
-            seer: model.seer.toString()
-          })}`}
-                    target="_blank" class="w-full py-1.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors text-xs font-medium flex items-center justify-center gap-1">
-            Contactar <span class="text-sm">→</span>
-          </a>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

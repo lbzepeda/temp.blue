@@ -5,7 +5,7 @@ export const models = [
     voltage: '110V',
     voltageType: 'blue',
     seer: 21.0,
-    area: '15-22',
+    area: '12-15',
     recommended: 'Habitaciones y oficinas pequeñas',
     features: {
       noise: '40.5/35.5/33 dB',
@@ -13,6 +13,7 @@ export const models = [
       energyRating: 'A+++',
     },
     highlight: 'Ideal para hogares',
+    certificate: 'Certificado AHRI 12KBTU 110V-SEER2 21-Serie WX.pdf',
   },
   {
     id: '12k-220v',
@@ -20,7 +21,7 @@ export const models = [
     voltage: '220V',
     voltageType: 'purple',
     seer: 21.5,
-    area: '15-22',
+    area: '12-15',
     recommended: 'Espacios residenciales medianos',
     features: {
       noise: '40.5/36.0/26.5 dB',
@@ -28,6 +29,7 @@ export const models = [
       energyRating: 'A+++',
     },
     highlight: 'Máxima eficiencia',
+    certificate: 'Certificado AHRI 12KBTU-SEER2 21.5-Serie WX.pdf',
   },
   {
     id: '18k-220v',
@@ -35,7 +37,7 @@ export const models = [
     voltage: '220V',
     voltageType: 'purple',
     seer: 21.0,
-    area: '23-34',
+    area: '16-23',
     recommended: 'Salas y espacios abiertos',
     features: {
       noise: '46/38.5/31.5 dB',
@@ -43,6 +45,7 @@ export const models = [
       energyRating: 'A++',
     },
     highlight: 'Balance perfecto',
+    certificate: 'Certificado AHRI 18KBTU-SEER2 21-Serie WX.pdf',
   },
   {
     id: '24k-220v',
@@ -50,7 +53,7 @@ export const models = [
     voltage: '220V',
     voltageType: 'purple',
     seer: 20.0,
-    area: '30-40',
+    area: '24-30',
     recommended: 'Oficinas y locales comerciales',
     features: {
       noise: '47.5/39.5/36 dB',
@@ -58,6 +61,7 @@ export const models = [
       energyRating: 'A++',
     },
     highlight: 'Alto rendimiento',
+    certificate: 'Certificado AHRI 24KBTU-SEER2 20-Serie WX.pdf',
   },
   {
     id: '36k-220v',
@@ -65,7 +69,7 @@ export const models = [
     voltage: '220V',
     voltageType: 'purple',
     seer: 18.0,
-    area: '45-55',
+    area: '30-45',
     recommended: 'Grandes espacios comerciales',
     features: {
       noise: '54/45/40 dB',
@@ -73,6 +77,7 @@ export const models = [
       energyRating: 'A+',
     },
     highlight: 'Máxima potencia',
+    certificate: 'Certificado AHRI 36KBTU-SEER2 18-Serie WX.pdf',
   },
 ];
 
