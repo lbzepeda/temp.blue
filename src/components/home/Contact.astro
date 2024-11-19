@@ -26,7 +26,10 @@ const contactMethods: ContactMethod[] = [
 ];
 ---
 
-<section id="contact" class="relative min-h-screen overflow-hidden">
+<section
+  id="contact"
+  class="relative h-[500px] md:min-h-screen overflow-hidden"
+>
   <div class="absolute inset-0 -z-10">
     <div
       class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"
@@ -47,12 +50,12 @@ const contactMethods: ContactMethod[] = [
   </div>
 
   <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex flex-col"
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col"
   >
     <div class="flex-1 flex items-center justify-center">
-      <div class="max-w-3xl mx-auto text-center space-y-6" data-text="reveal">
+      <div class="max-w-3xl mx-auto text-center space-y-4" data-text="reveal">
         <h2
-          class="text-6xl lg:text-7xl font-medium tracking-tight text-white text-glow"
+          class="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white text-glow"
         >
           Olvídate de trucos<br class="hidden sm:block" /> y vive el confort real
         </h2>
@@ -101,7 +104,7 @@ const contactMethods: ContactMethod[] = [
                 </div>
                 <div class="flex-grow">
                   <div class="flex items-center gap-2">
-                    <span class="text-sm font-light text-gray-900 dark:text-gray-100">
+                    <span class="text-sm font-bold text-gray-900 dark:text-gray-100">
                       {method.value}
                     </span>
                     {method.realTime && (
@@ -155,11 +158,9 @@ const contactMethods: ContactMethod[] = [
 
   if (video) {
     const loadVideo = () => {
-      // Detectar iOS
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
       if (isIOS) {
-        // En iOS, cargar el video inmediatamente
         video
           .play()
           .then(() => {
@@ -168,12 +169,9 @@ const contactMethods: ContactMethod[] = [
           })
           .catch((error) => {
             console.warn('Error reproduciendo video:', error);
-            // En iOS, mostrar una imagen de respaldo en lugar de ocultar el video
             video.style.display = 'none';
-            // Aquí puedes agregar un fallback image si lo deseas
           });
       } else {
-        // Comportamiento actual para no-iOS
         video.style.opacity = '0';
         const playPromise = video.play();
 
@@ -191,15 +189,12 @@ const contactMethods: ContactMethod[] = [
       }
     };
 
-    // Para iOS, necesitamos esperar a un evento de interacción del usuario
     if (document.readyState === 'complete') {
-      // Pequeño retraso para asegurar que todo esté listo
       setTimeout(loadVideo, 100);
     } else {
       window.addEventListener('load', loadVideo);
     }
 
-    // Manejador de redimensionamiento optimizado
     let resizeTimeout: ReturnType<typeof setTimeout>;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
