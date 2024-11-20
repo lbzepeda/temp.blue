@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.tempbluenicaragua.com/sitemap-index.xml
+Sitemap: https://www.tempblue.com.ni/sitemap-index.xml
 
 # Proteger archivos y carpetas específicas
-Disallow: /_astro/    # Carpeta de assets compilados
-Disallow: /*.pdf$     # Bloquear acceso a PDFs (como tempblue_WX_series.pdf)
+Disallow: /_astro/    
+Disallow: /*.pdf$     

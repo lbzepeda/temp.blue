@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://www.tempbluenicaragua.com',
+  site: 'https://www.tempblue.com.ni',
   output: 'static',
   server: {
     host: true,
