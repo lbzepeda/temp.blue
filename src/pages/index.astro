@@ -12,7 +12,9 @@ import Layout from '@/layouts/Layout.astro';
 <Layout title="TempBlue - Climatización Inteligente">
   <Navbar />
   <Hero />
-  <Bento />
+  <div class="min-h-[800px]">
+    <Bento client:visible />
+  </div>
   <Product />
   <FAQ />
   <Contact />
