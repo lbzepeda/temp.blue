@@ -4,20 +4,20 @@ Sitio web corporativo para TempBlue, empresa líder en soluciones de climatizaci
 
 ## 📸 Capturas de Pantalla
 
-### Vista Principal
+<div align="center">
+  <img src="/public/screenshots/home.png" alt="Website Preview" width="100%" />
+   <p><em>Clean Design</em></p>
+</div>
 
-![Vista Principal](./screenshots/home.png)
-_Página de inicio mostrando los servicios principales_
+<div align="center">
+  <img src="/public/screenshots/dark-mode.png" alt="Dark Mode Preview" width="100%" />
+  <p><em>Interfaz adaptada para modo oscuro</em></p>
+</div>
 
-### Modo Oscuro
-
-![Modo Oscuro](./screenshots/dark-mode.png)
-_Interfaz adaptada para modo oscuro_
-
-### Vista Móvil
-
-![Vista Móvil](./screenshots/mobile.png)
-_Diseño responsive optimizado para dispositivos móviles_
+<div align="center">
+  <img src="/public/screenshots/mobile.png" alt="Mobile Preview" width="50%" />
+  <p><em>Diseño responsive optimizado para dispositivos móviles</em></p>
+</div>
 
 ## 🚀 Tecnologías
 
