@@ -1,6 +1,6 @@
 <div align="center">
   <img src="/public/screenshots/home.png" alt="Website Preview" width="100%" />
-  <h1>🌡️ TempBlue Website</h1>
+  <h1>TempBlue Website</h1>
   <p>
     <a href="https://github.com/lbzepeda/tempblue/stargazers">
       <img src="https://img.shields.io/github/stars/lbzepeda/tempblue?style=flat-square" alt="Stars" />
@@ -14,7 +14,7 @@
   </p>
 </div>
 
-Bienvenido al repositorio de TempBlue, la solución web definitiva para servicios de climatización en Nicaragua. Combinando tecnología de punta con un diseño intuitivo, ofrecemos una experiencia digital que refleja nuestra excelencia en servicios de climatización.
+Bienvenido al repositorio de TempBlue, la solución web para servicios de climatización en Nicaragua.
 
 ## ✨ Vista Previa
 
@@ -53,16 +53,16 @@ Bienvenido al repositorio de TempBlue, la solución web definitiva para servicio
 ## 🛠️ Configuración Local
 
 ```bash
-# 1. Clona la magia ✨
+# 1. Clona la magia
 git clone https://github.com/lbzepeda/tempblue
 
-# 2. Instala las dependencias 📦
+# 2. Instala las dependencias
 npm install
 
-# 3. Inicia el servidor de desarrollo 🚀
+# 3. Inicia el servidor de desarrollo
 npm run dev
 
-# 4. Prepara para producción 🎮
+# 4. Prepara para producción
 npm run build
 ```
 
@@ -71,17 +71,17 @@ npm run build
 ```
 /
 .
-├── 📄 README.md
-├── ⚙️ astro.config.mjs
-├── 🔧 config.ts
-├── 📝 eslint.config.js
-├── 📦 package.json
-├── 🎨 src
-│   ├── 🧩 components
-│   ├── 📐 layouts
-│   ├── 📑 pages
-│   └── 🎭 styles
-└── 🔧 tsconfig.json
+├── README.md
+├── astro.config.mjs
+├── config.ts
+├── eslint.config.js
+├── package.json
+├── src
+│   ├── components
+│   ├── layouts
+│   ├── pages
+│   └── styles
+└── tsconfig.json
 ```
 
 ## 📜 Licencia
