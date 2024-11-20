@@ -1,80 +1,96 @@
-# TempBlue Website
-
-Sitio web corporativo para TempBlue, empresa líder en soluciones de climatización en Nicaragua. Construido con Astro, TailwindCSS y optimizado para rendimiento.
-
-## 📸 Capturas de Pantalla
-
 <div align="center">
   <img src="/public/screenshots/home.png" alt="Website Preview" width="100%" />
-   <p><em>Clean Design</em></p>
+  <h1>🌡️ TempBlue Website</h1>
+  <p>
+    <a href="https://github.com/lbzepeda/tempblue/stargazers">
+      <img src="https://img.shields.io/github/stars/lbzepeda/tempblue?style=flat-square" alt="Stars" />
+    </a>
+    <a href="https://github.com/lbzepeda/tempblue/network/members">
+      <img src="https://img.shields.io/github/forks/lbzepeda/tempblue?style=flat-square" alt="Forks" />
+    </a>
+    <a href="https://github.com/lbzepeda/tempblue/issues">
+      <img src="https://img.shields.io/github/issues/lbzepeda/tempblue?style=flat-square" alt="Issues" />
+    </a>
+  </p>
 </div>
+
+Bienvenido al repositorio de TempBlue, la solución web definitiva para servicios de climatización en Nicaragua. Combinando tecnología de punta con un diseño intuitivo, ofrecemos una experiencia digital que refleja nuestra excelencia en servicios de climatización.
+
+## ✨ Vista Previa
 
 <div align="center">
   <img src="/public/screenshots/dark-mode.png" alt="Dark Mode Preview" width="100%" />
-  <p><em>Interfaz adaptada para modo oscuro</em></p>
+  <p><em>Modo Oscuro - Porque la comodidad visual también importa</em></p>
 </div>
 
 <div align="center">
   <img src="/public/screenshots/mobile.png" alt="Mobile Preview" width="50%" />
-  <p><em>Diseño responsive optimizado para dispositivos móviles</em></p>
+  <p><em>Experiencia móvil optimizada - La climatización en la palma de tu mano</em></p>
 </div>
 
-## 🚀 Tecnologías
+## 🚀 Stack Tecnológico
 
-- [Astro](https://astro.build/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [TypeScript](https://www.typescriptlang.org/)
+<div align="center">
+  <a href="https://astro.build">
+    <img src="https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white" alt="Astro" />
+  </a>
+  <a href="https://tailwindcss.com">
+    <img src="https://img.shields.io/badge/Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
+  </a>
+  <a href="https://www.typescriptlang.org">
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  </a>
+</div>
 
-## 🔥 Características
+## 🎯 Características Destacadas
 
-- Diseño responsive optimizado para móviles
-- Modo oscuro/claro
-- Alto rendimiento y SEO optimizado
-- Integración con certificaciones WiFi, UL y AHRI
-- Formulario de contacto integrado
+- 📱 **Diseño Responsive**: Experiencia perfecta en cualquier dispositivo
+- 🌓 **Tema Dual**: Cambio fluido entre modo claro y oscuro
+- 🚄 **Alto Rendimiento**: Optimizado para velocidad y SEO
+- 🏆 **Certificaciones**: Integración con WiFi, UL y AHRI
+- 📬 **Contacto Directo**: Formulario integrado para comunicación inmediata
 
-## 🛠️ Instalación
+## 🛠️ Configuración Local
 
 ```bash
-# Clonar el repositorio
+# 1. Clona la magia ✨
 git clone https://github.com/lbzepeda/tempblue
 
-# Instalar dependencias
+# 2. Instala las dependencias 📦
 npm install
 
-# Iniciar servidor de desarrollo
+# 3. Inicia el servidor de desarrollo 🚀
 npm run dev
 
-# Construir para producción
+# 4. Prepara para producción 🎮
 npm run build
 ```
 
-## 📁 Estructura del Proyecto
+## 📂 Arquitectura del Proyecto
 
 ```
 /
 .
-├── README.md
-├── astro.config.mjs
-├── config.ts
-├── eslint.config.js
-├── package-lock.json
-├── package.json
-├── postcss.config.mjs
-├── src
-│   ├── components
-│   ├── env.d.ts
-│   ├── layouts
-│   ├── pages
-│   └── styles
-├── tailwind.config.mjs
-└── tsconfig.json
+├── 📄 README.md
+├── ⚙️ astro.config.mjs
+├── 🔧 config.ts
+├── 📝 eslint.config.js
+├── 📦 package.json
+├── 🎨 src
+│   ├── 🧩 components
+│   ├── 📐 layouts
+│   ├── 📑 pages
+│   └── 🎭 styles
+└── 🔧 tsconfig.json
 ```
 
-## 📄 Licencia
+## 📜 Licencia
 
-Todos los derechos reservados © 2024 TempBlue
+Todos los derechos reservados © 2024 TempBlue - Enfriando Nicaragua con Excelencia
 
-## 👤 Desarrollador
+## 👨‍💻 Creador
 
-Desarrollado por [Levi Zepeda](https://github.com/lbzepeda)
+<div align="center">
+  <img src="https://github.com/lbzepeda.png" width="100" style="border-radius: 50%;" alt="Levi Zepeda" />
+  <p>Desarrollado con 💙 por <a href="https://github.com/lbzepeda">Levi Zepeda</a></p>
+</div>
