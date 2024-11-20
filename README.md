@@ -6,17 +6,17 @@ Sitio web corporativo para TempBlue, empresa líder en soluciones de climatizaci
 
 ### Vista Principal
 
-![Vista Principal](/screenshots/home.png)
+![Vista Principal](./screenshots/home.png)
 _Página de inicio mostrando los servicios principales_
 
 ### Modo Oscuro
 
-![Modo Oscuro](/screenshots/dark-mode.png)
+![Modo Oscuro](./screenshots/dark-mode.png)
 _Interfaz adaptada para modo oscuro_
 
 ### Vista Móvil
 
-![Vista Móvil](/screenshots/mobile.png)
+![Vista Móvil](./screenshots/mobile.png)
 _Diseño responsive optimizado para dispositivos móviles_
 
 ## 🚀 Tecnologías
