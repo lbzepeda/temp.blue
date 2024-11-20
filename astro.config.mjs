@@ -9,6 +9,11 @@ export default defineConfig({
   server: {
     host: true,
   },
+  headers: {
+    'X-Frame-Options': 'DENY',
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+  },
   integrations: [
     sitemap(),
     tailwind({
