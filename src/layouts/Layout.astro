@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import { SEO } from 'astro-seo';
 
@@ -90,6 +91,7 @@ const seoTitle = `${title} | TempBlue - Aire Acondicionado Nicaragua`;
   <body class="bg-white dark:bg-gray-900">
     <slot />
     <SpeedInsights />
+    <Analytics />
   </body>
 </html>
 
