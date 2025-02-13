@@ -3,23 +3,23 @@ import { Image } from 'astro:assets';
 
 const NAVIGATION_ITEMS = [
   {
-    href: '#home',
+    href: '/#home',
     label: 'Inicio',
   },
   {
-    href: '#bento',
+    href: '/#bento',
     label: 'Climatización',
   },
   {
-    href: '#products',
+    href: '/#products',
     label: 'Productos',
   },
   {
-    href: '#faq',
+    href: '/#faq',
     label: 'FAQ',
   },
   {
-    href: '#contact',
+    href: '/#contact',
     label: 'Contáctanos',
   },
   {
@@ -59,10 +59,14 @@ const phoneNumber = '+505 7723-3432';
       <a href="/#home" class="flex-shrink-0">
         <Image
           src="/commercial-logo.webp"
-          width={32}
-          height={32}
+          width={24}
+          height={24}
           alt="TempBlue Logo"
           class="h-6 w-auto"
+          format="webp"
+          quality={75}
+          loading="eager"
+          decoding="sync"
         />
       </a>
 

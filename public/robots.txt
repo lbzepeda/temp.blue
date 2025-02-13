@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /_astro/*.css
+Allow: /_astro/*.js
 Sitemap: https://www.tempblue.com.ni/sitemap-index.xml
 
-# Proteger archivos y carpetas específicas
-Disallow: /_astro/    
-Disallow: /*.pdf$     
+Disallow: /*.pdf$
