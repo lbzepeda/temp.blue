@@ -4,20 +4,30 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 import { SEO } from 'astro-seo';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   image?: string;
   canonicalURL?: string;
 }
 
+const SITE_URL = 'https://www.tempblue.com.ni';
+const DEFAULT_IMAGE = '/imagen-social-default.webp';
+const DEFAULT_TITLE = 'TempBlue - Climatización Inteligente';
+const DEFAULT_DESCRIPTION =
+  'TempBlue: Climatización inteligente en Nicaragua. Aire acondicionado con tecnología avanzada para mayor confort, eficiencia y ahorro energético. ¡Contáctanos!';
+
 const {
-  title,
-  description = 'TempBlue - Expertos en climatización y aires acondicionados en Nicaragua. Instalación y mantenimiento de aire acondicionado residencial y comercial',
-  image = '/imagen-social-default.webp',
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  image = DEFAULT_IMAGE,
   canonicalURL = Astro.url,
 } = Astro.props;
 
-// Create full title for SEO
+const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
+const absoluteCanonical = canonicalURL.toString().startsWith('http')
+  ? canonicalURL
+  : `${SITE_URL}${canonicalURL}`;
+
 const seoTitle = `${title} | TempBlue - Aire Acondicionado Nicaragua`;
 ---
 
@@ -30,35 +40,42 @@ const seoTitle = `${title} | TempBlue - Aire Acondicionado Nicaragua`;
     <SEO
       title={seoTitle}
       description={description}
-      canonical={canonicalURL}
+      canonical={absoluteCanonical}
       noindex={false}
       nofollow={false}
       openGraph={{
         basic: {
           title: seoTitle,
           type: 'website',
-          image: image,
-          url: Astro.url,
+          image: absoluteImage,
+          url: absoluteCanonical,
         },
         optional: {
           description: description,
           locale: 'es_NI',
           siteName: 'TempBlue',
         },
+        image: {
+          alt: 'TempBlue – Climatización Inteligente y Aire Acondicionado en Nicaragua',
+          width: 1200,
+          height: 630,
+          type: 'image/webp',
+        },
       }}
       twitter={{
         card: 'summary_large_image',
         title: seoTitle,
         description: description,
-        image: image,
-        imageAlt: 'TempBlue Nicaragua',
+        image: absoluteImage,
+        imageAlt:
+          'TempBlue – Climatización Inteligente y Aire Acondicionado en Nicaragua',
       }}
       extend={{
         meta: [
           {
             name: 'keywords',
             content:
-              'aire acondicionado, climatización, Nicaragua, instalación aire acondicionado, mantenimiento aire acondicionado, TempBlue, sistemas de climatización',
+              'aire acondicionado, climatización, Nicaragua, instalación aire acondicionado, mantenimiento aire acondicionado, TempBlue, sistemas de climatización, climatización inteligente',
           },
           {
             name: 'author',
@@ -97,9 +114,9 @@ const seoTitle = `${title} | TempBlue - Aire Acondicionado Nicaragua`;
 
 <style is:global>
   :root {
-    --accent: #0891b2; /* Main color - Cyan 600 */
-    --accent-light: #22d3ee; /* Cyan 400 */
-    --accent-dark: #155e75; /* Cyan 800 */
+    --accent: #0891b2;
+    --accent-light: #22d3ee;
+    --accent-dark: #155e75;
   }
 
   html {
